@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express"
+import matchMaking from "../controllers/matchMaking"
 const express = require('express')
 const router = express.Router()
 
@@ -17,12 +18,8 @@ router.use((req: Request, res: Response, next: NextFunction) => {
     next()
 })
 // define the home page route
-router.get('/', (req: Request, res: Response, next: NextFunction) => {
-    res.send(200)
-})
+router.get('/add-player/:id', matchMaking.addPlayer);
 // define the about route
-router.get('/about', (req: Request, res: Response, next: NextFunction) => {
-    res.send('About page')
-})
+router.get('/remove-player/:id', matchMaking.removePlayer);
 
 export default router;
